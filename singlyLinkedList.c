@@ -47,11 +47,16 @@ static int findprevious(node** head, int pos){
 // Removes the node at the end
 int Remove(node* head){
     node* curr = head;
+    if(curr->next == NULL){
+        free(curr);
+        return 0;
+    }
     while((curr->next)->next != NULL){
         curr = curr->next;
     }
     free(curr->next);
     curr->next = NULL;
+    return 1;
 }
 
 // Removes the node at the Nth spot
